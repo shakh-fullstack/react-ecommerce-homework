@@ -1,68 +1,111 @@
+import { useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ArrowLeftIcon } from "../components/Icons";
-import { Link } from 'react-router-dom';
+import { useStore } from "../context/store";
+import { isValidEmail } from "../utils/validators";
 
 function LoginPage() {
+  const { user, login, showNotice, t } = useStore();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
+  const [error, setError] = useState("");
+
+  // Tizimga kirgan foydalanuvchi bu sahifani ko'rmaydi
+  if (user) return <Navigate to="/" replace />;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!email.trim() || !password) return setError("errors.loginRequired");
+    if (!isValidEmail(email)) return setError("errors.emailInvalid");
+    if (password.length < 6) return setError("errors.passwordShort");
+
+    const result = await login({ email, password, remember });
+    if (result.error) return setError(result.error);
+
+    showNotice("notice.welcome", { name: result.user.name });
+    navigate("/", { replace: true });
+  };
+
   return (
-    <section className="auth-section" aria-label="Kirish">
-      <div className="auth-card">
-        <div className="auth-card-top">
-          <span className="auth-badge">Kirish</span>
-          <Link to="/" className="auth-back-btn">
-            <ArrowLeftIcon />
-            <span>Do‘konga qaytish</span>
-          </Link>
-        </div>
+    <div className="auth-card">
+      <div className="auth-card-top">
+        <span className="auth-badge">{t("login.badge")}</span>
+        <Link to="/" className="auth-back-btn">
+          <ArrowLeftIcon />
+          <span>{t("common.backToShop")}</span>
+        </Link>
+      </div>
 
-        <h3 className="auth-title">Hisobga kirish</h3>
-        <p className="auth-desc">
-          Buyurtmalar tarixi va savatingizni ko‘rish uchun hisobingizga kiring.
-        </p>
+      <h3 className="auth-title">{t("login.title")}</h3>
+      <p className="auth-desc">{t("login.desc")}</p>
+      <p className="auth-hint">
+        {t("login.demo")} azizbek@example.com / 123456
+      </p>
 
-        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <div className="auth-field-group">
           <label className="auth-label" htmlFor="login-email">
-            Elektron pochta
+            {t("login.email")}
           </label>
           <input
             id="login-email"
             type="email"
             className="auth-input"
             placeholder="azizbek@example.com"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
 
         <div className="auth-field-group">
           <label className="auth-label" htmlFor="login-password">
-            Parol
+            {t("login.password")}
           </label>
           <input
             id="login-password"
             type="password"
             className="auth-input"
-            placeholder="Parolingizni kiriting"
+            placeholder={t("login.passwordPlaceholder")}
+            autoComplete="current-password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
 
         <label className="auth-checkbox-row">
-          <input type="checkbox" className="auth-checkbox" />
-          <span>Meni eslab qol</span>
+          <input
+            type="checkbox"
+            className="auth-checkbox"
+            checked={remember}
+            onChange={(event) => setRemember(event.target.checked)}
+          />
+          <span>{t("login.remember")}</span>
         </label>
 
-        <button type="button" className="auth-submit-btn">
-          Kirish
+        {error && (
+          <p className="form-error" role="alert">
+            {t(error)}
+          </p>
+        )}
+
+        <button type="submit" className="auth-submit-btn">
+          {t("login.submit")}
         </button>
       </form>
 
-        <p className="auth-switch">
-          Hali hisobingiz yo‘qmi?{" "}
-          <Link to="/register" className="auth-switch-link">
-            Ro‘yxatdan o‘tish
-          </Link>
-        </p>
-      </div>
-    </section>
+      <p className="auth-switch">
+        {t("login.noAccount")}{" "}
+        <Link to="/register" className="auth-switch-link">
+          {t("header.register")}
+        </Link>
+      </p>
+    </div>
   );
 }
 
 export default LoginPage;
-    

@@ -2,45 +2,40 @@ import { Link } from "react-router-dom";
 import CartItemCard from "../components/CartItemCard";
 import CartSummary from "../components/CartSummary";
 import { ArrowLeftIcon, CartIcon } from "../components/Icons";
+import { useStore } from "../context/store";
 
 function CartPage() {
-  const cartItems = [
-    {
-      id: 1,
-      name: "Sony WH-1000XM5",
-      category: "Audio",
-      specs: "Active Noise Cancelling • 30 soat batareya",
-      unitPrice: "4 200 000 so'm",
-      subtotal: "4 200 000 so'm",
-      quantity: 1,
-      icon: "headphones",
-    },
-    {
-      id: 2,
-      name: "Keychron K2 Pro",
-      category: "Aksessuarlar",
-      specs: "Mexanik klaviatura • Bluetooth / USB-C",
-      unitPrice: "1 350 000 so'm",
-      subtotal: "2 700 000 so'm",
-      quantity: 2,
-      icon: "keyboard",
-    },
-  ];
+  const { cartItems, cartCount, clearCart, t } = useStore();
+
+  if (cartItems.length === 0) {
+    return (
+      <section className="cart-page-section" aria-label={t("cart.ariaLabel")}>
+        <div className="empty-state">
+          <div className="empty-state-icon">
+            <CartIcon />
+          </div>
+          <h3 className="empty-state-title">{t("cart.emptyTitle")}</h3>
+          <p className="empty-state-desc">{t("cart.emptyDesc")}</p>
+          <Link to="/" className="empty-state-btn">
+            {t("common.backToShop")}
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="cart-page-section" aria-label="Savat sahifasi">
+    <section className="cart-page-section" aria-label={t("cart.ariaLabel")}>
       <div className="cart-page-top">
         <div>
-          <span className="auth-badge">Savat</span>
-          <h2 className="cart-page-title">Savatingiz</h2>
-          <p className="cart-page-subtitle">
-            3 ta mahsulot tanlangan — buyurtmani rasmiylashtiring
-          </p>
+          <span className="auth-badge">{t("cart.badge")}</span>
+          <h2 className="cart-page-title">{t("cart.title")}</h2>
+          <p className="cart-page-subtitle">{t("cart.subtitle", { count: cartCount })}</p>
         </div>
 
         <Link to="/" className="auth-back-btn">
           <ArrowLeftIcon />
-          <span>Do‘konga qaytish</span>
+          <span>{t("common.backToShop")}</span>
         </Link>
       </div>
 
@@ -49,10 +44,10 @@ function CartPage() {
           <div className="cart-header">
             <h3 className="cart-title">
               <CartIcon />
-              <span>Tanlangan mahsulotlar (3)</span>
+              <span>{t("cart.selected", { count: cartCount })}</span>
             </h3>
-            <button type="button" className="btn-clear">
-              Savatni tozalash
+            <button type="button" className="btn-clear" onClick={clearCart}>
+              {t("cart.clear")}
             </button>
           </div>
 

@@ -1,20 +1,13 @@
-import EmptyState from "./EmptyState";
+import { useStore } from "../context/store";
 import ProductCard from "./ProductCard";
 
-function ProductGrid({ products, wishlist, onToggleWishlist, onResetFilter }) {
-  if (products.length === 0) {
-    return <EmptyState onReset={onResetFilter} />;
-  }
+function ProductGrid({ products }) {
+  const { t } = useStore();
 
   return (
-    <section className="product-grid" aria-label="Mahsulotlar katalogi">
+    <section className="product-grid" aria-label={t("product.catalog")}>
       {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          isLiked={wishlist.includes(product.id)}
-          onToggleWishlist={() => onToggleWishlist(product.id)}
-        />
+        <ProductCard key={product.id} product={product} />
       ))}
     </section>
   );

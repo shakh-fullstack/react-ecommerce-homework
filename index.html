@@ -1,10 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="uz">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>texno-bozor-homework</title>
+    <meta name="description" content="TexnoBozor — zamonaviy texnika do‘koni" />
+    <title>TexnoBozor — zamonaviy texnika do‘koni</title>
+    <script>
+      // Sahifa chizilishidan oldin mavzu va tilni qo'yamiz (oq "miltillash" bo'lmasligi uchun)
+      (function () {
+        try {
+          var savedTheme = JSON.parse(localStorage.getItem("texnobozor:theme"));
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+
+          var savedLanguage = JSON.parse(localStorage.getItem("texnobozor:language"));
+          if (savedLanguage) document.documentElement.lang = savedLanguage;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

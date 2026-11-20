@@ -763,9 +763,7 @@ select {
 
 /* Cart Page */
 .cart-page-section {
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border);
+  margin-top: 4px;
 }
 
 .cart-page-top {
@@ -1310,6 +1308,9 @@ select {
 }
 
 .auth-card {
+  width: 100%;
+  max-width: 520px;
+  margin: 24px auto;
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
@@ -1469,6 +1470,7 @@ select {
   color: var(--brand);
   font-size: 13px;
   font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -1520,5 +1522,564 @@ select {
   .cart-page-item-controls {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+/* Interaktiv holatlar (xato xabarlari, bildirishnoma, disabled tugmalar) */
+.promo-status--error {
+  color: var(--danger);
+}
+
+.form-error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--danger-soft);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cart-summary-card .form-error {
+  margin-bottom: 12px;
+}
+
+.qty-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+a.empty-state-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  max-width: 360px;
+  padding: 14px 18px;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-md);
+  background-color: var(--success-soft);
+  color: var(--success);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+}
+
+/* Header: til tanlash va mavzu tugmasi */
+.header-select {
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.header-select:focus {
+  border-color: var(--brand);
+}
+
+.header-icon-btn {
+  width: 40px;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Login sahifasidagi demo hisob eslatmasi */
+.auth-hint {
+  margin: -8px 0 18px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--brand-soft);
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Profil sahifasi */
+.profile-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-details .summary-row {
+  gap: 12px;
+}
+
+.profile-details .summary-row span:last-child {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.profile-orders {
+  margin-top: 16px;
+}
+
+.profile-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 18px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.profile-empty p {
+  margin: 0;
+}
+
+/* ===== Tungi rejim (dark mode) ===== */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --surface: #111827;
+  --surface-muted: #1a2332;
+  --surface-soft: #243045;
+  --text: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #8391a7;
+  --border: #263247;
+  --border-strong: #3a4862;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --brand: #a5b4fc;
+  --brand-soft: rgba(99, 102, 241, 0.16);
+  --brand-border: rgba(129, 140, 248, 0.35);
+  --success: #4ade80;
+  --success-soft: rgba(34, 197, 94, 0.14);
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.12);
+  --warning: #fbbf24;
+  --warning-soft: rgba(251, 191, 36, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .site-header {
+  background-color: rgba(11, 17, 32, 0.88);
+}
+
+[data-theme="dark"] .product-visual,
+[data-theme="dark"] .cart-item-thumb {
+  background: linear-gradient(145deg, #172033 0%, #1e1b4b 100%);
+  color: #c7d2fe;
+}
+
+[data-theme="dark"] .product-visual--out {
+  background: linear-gradient(145deg, #172033 0%, #111827 100%);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .stock-badge--out {
+  background-color: #334155;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .wishlist-btn {
+  background-color: rgba(17, 24, 39, 0.9);
+}
+
+[data-theme="dark"] .wishlist-btn:hover,
+[data-theme="dark"] .wishlist-btn.is-liked,
+[data-theme="dark"] .wishlist-toggle.active {
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+[data-theme="dark"] .header-pill--brand,
+[data-theme="dark"] .profile-avatar-sm,
+[data-theme="dark"] .profile-avatar-lg {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+}
+
+[data-theme="dark"] .header-pill--brand:hover {
+  background-color: #4338ca;
+  border-color: #4338ca;
+}
+
+[data-theme="dark"] .search-chip:hover,
+[data-theme="dark"] .btn-promo:hover {
+  background-color: rgba(99, 102, 241, 0.26);
+}
+
+[data-theme="dark"] .btn-checkout {
+  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+}
+
+[data-theme="dark"] .toast {
+  border-color: rgba(74, 222, 128, 0.35);
+  background-color: #0f2a1d;
+}
+
+/* ===== Qo'shimcha funksiyalar: Batafsil sahifa, Muddatli to'lov, Taqqoslash, Chek modal, Admin ===== */
+.product-visual-link {
+  display: grid;
+  place-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-title-link:hover {
+  color: var(--brand);
+}
+
+.compare-btn {
+  position: absolute;
+  top: 12px;
+  right: 52px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.compare-btn:hover,
+.compare-btn.is-active {
+  color: var(--brand);
+  background-color: var(--brand-soft);
+  border-color: var(--brand-border);
+}
+
+[data-theme="dark"] .compare-btn {
+  background-color: rgba(17, 24, 39, 0.9);
+}
+
+.installment-chip {
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background-color: var(--brand-soft);
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.installment-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.detail-installment-box .installment-tabs {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.installment-tab {
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-muted);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.installment-tab.active {
+  background-color: var(--brand-soft);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.summary-row--installment {
+  padding-top: 6px;
+  color: var(--brand);
+}
+
+/* Buyurtma kartasi tugmalari va bekor qilingan holat */
+.order-status--canceled {
+  background-color: var(--danger-soft);
+  color: var(--danger);
+}
+
+.order-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 6px;
+}
+
+.order-action-btn {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.order-action-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.order-action-btn--danger {
+  color: var(--danger);
+  border-color: transparent;
+  background-color: var(--danger-soft);
+}
+
+/* Chek modal oynasi */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background-color: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 460px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.modal-close-btn {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--surface-muted);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.modal-items-box {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-muted);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-cancel-order {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--danger-soft);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Batafsil sahifa */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.detail-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, #f8fafc 0%, #eef2ff 100%);
+  color: #312e81;
+}
+
+[data-theme="dark"] .detail-visual {
+  background: linear-gradient(145deg, #172033 0%, #1e1b4b 100%);
+  color: #c7d2fe;
+}
+
+.detail-visual svg {
+  width: 112px;
+  height: 112px;
+}
+
+.detail-price {
+  margin: 8px 0 16px;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.detail-installment-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-muted);
+}
+
+.detail-installment-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.detail-installment-result strong {
+  font-size: 15px;
+  color: var(--brand);
+}
+
+.detail-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.detail-perk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.detail-perk svg {
+  color: var(--success);
+}
+
+.detail-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.detail-cart-btn {
+  flex: 1;
+  justify-content: center;
+  height: 42px;
+}
+
+.detail-reviews-grid {
+  margin-top: 24px;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.review-textarea {
+  height: auto;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.related-section {
+  margin-top: 32px;
+}
+
+.related-section .orders-title {
+  margin-bottom: 16px;
+}
+
+/* Taqqoslash jadvali */
+.compare-table-wrap {
+  overflow-x: auto;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.compare-table th {
+  width: 180px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.compare-product-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.compare-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Admin */
+.admin-price-input {
+  width: 130px;
+}
+
+@media (max-width: 1020px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
   }
 }
