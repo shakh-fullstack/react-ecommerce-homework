@@ -1,6 +1,7 @@
 function OrderCard({ order }) {
   return (
     <article className="order-card">
+
       <div className="order-top">
         <span className="order-id">
           {order.id} — {order.customer}
@@ -14,6 +15,7 @@ function OrderCard({ order }) {
         <span className="order-delivery">{order.delivery}</span>
         <span className="order-total">{order.total}</span>
       </div>
+      
     </article>
   );
 }

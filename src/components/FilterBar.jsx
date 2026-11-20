@@ -7,11 +7,7 @@ function FilterBar({ onlyWishlist, onToggleOnlyWishlist, resultsCount }) {
     <section className="filter-bar" aria-label="Mahsulotlarni saralash">
       <div className="filter-categories">
         {categories.map((category, index) => (
-          <button
-            key={category}
-            type="button"
-            className={`filter-tab ${index === 0 ? "active" : ""}`}
-          >
+          <button key={category} type="button" className={`filter-tab ${index === 0 ? "active" : ""}`}>
             {category}
           </button>
         ))}
@@ -20,9 +16,7 @@ function FilterBar({ onlyWishlist, onToggleOnlyWishlist, resultsCount }) {
       <div className="filter-controls">
         <button
           type="button"
-          className={`wishlist-toggle ${onlyWishlist ? "active" : ""}`}
-          onClick={onToggleOnlyWishlist}
-        >
+          className={`wishlist-toggle ${onlyWishlist ? "active" : ""}`} onClick={onToggleOnlyWishlist}>
           <HeartIcon filled={onlyWishlist} />
           <span>Faqat sevimlilar</span>
         </button>

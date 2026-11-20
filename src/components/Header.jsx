@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 function Header({ wishlistCount, onlyWishlist, onWishlistClick, onBrandClick }) {
   return (
     <header className="site-header">
+
       <div className="container header-inner">
-        <Link className="brand">
+        <Link to="/" className="brand" onClick={onBrandClick}>
           <div className="brand-mark">TB</div>
-          <div onClick={onBrandClick}>
+          <div>
             <p className="brand-title">TexnoBozor</p>
             <p className="brand-subtitle">Zamonaviy texnika do‘koni</p>
           </div>
@@ -17,11 +18,7 @@ function Header({ wishlistCount, onlyWishlist, onWishlistClick, onBrandClick }) 
           <span className="header-search-icon">
             <SearchIcon />
           </span>
-          <input
-            type="text"
-            className="header-search-input"
-            placeholder="Mahsulot nomi bo‘yicha qidirish..."
-          />
+          <input type="text" className="header-search-input" placeholder="Mahsulot nomi bo‘yicha qidirish..."/>
         </div>
 
         <div className="header-actions">
@@ -29,9 +26,10 @@ function Header({ wishlistCount, onlyWishlist, onWishlistClick, onBrandClick }) 
             type="button"
             className="header-pill"
             aria-pressed={onlyWishlist}
-            onClick={onWishlistClick}
-          >
+            onClick={onWishlistClick}>
+
             <HeartIcon filled={onlyWishlist || wishlistCount > 0} />
+
             <span>Sevimlilar</span>
             <span className="pill-count">{wishlistCount}</span>
           </button>
@@ -52,6 +50,7 @@ function Header({ wishlistCount, onlyWishlist, onWishlistClick, onBrandClick }) 
           <Link to="/register" className="header-pill header-pill--brand">
             <span>Ro‘yxatdan o‘tish</span>
           </Link>
+
         </div>
       </div>
     </header>

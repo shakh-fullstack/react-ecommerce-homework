@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import Layout from "../layouts/Layout";
 import HomePage from "../pages/HomePage";
 import CartPage from "../pages/CartPage";
-import Layout from "./../layouts/Layout";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage/>
+        element: <HomePage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
       {
         path: "login",
@@ -23,8 +27,8 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: "cart",
-        element: <CartPage />,
+        path: "*",
+        element: <Navigate to="/" replace />,
       },
     ],
   },

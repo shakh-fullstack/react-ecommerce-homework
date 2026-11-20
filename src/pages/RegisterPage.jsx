@@ -3,22 +3,23 @@ import { Link } from "react-router-dom";
 
 function RegisterPage() {
   return (
-    <div className="auth-card">
-      <div className="auth-card-top">
-        <span className="auth-badge">Ro‘yxatdan o‘tish</span>
+    <section className="auth-section" aria-label="Ro'yxatdan o'tish">
+      <div className="auth-card">
+        <div className="auth-card-top">
+          <span className="auth-badge">Ro‘yxatdan o‘tish</span>
 
-        <Link to="/" className="auth-back-btn">
-          <ArrowLeftIcon />
-          <span>Do‘konga qaytish</span>
-        </Link>
-      </div>
+          <Link to="/" className="auth-back-btn">
+            <ArrowLeftIcon />
+            <span>Do‘konga qaytish</span>
+          </Link>
+        </div>
 
-      <h3 className="auth-title">Yangi hisob yaratish</h3>
-      <p className="auth-desc">
-        Tezkor buyurtma berish va sevimlilarni saqlash uchun ro‘yxatdan o‘ting.
-      </p>
+        <h3 className="auth-title">Yangi hisob yaratish</h3>
+        <p className="auth-desc">
+          Tezkor buyurtma berish va sevimlilarni saqlash uchun ro‘yxatdan o‘ting.
+        </p>
 
-      <form className="auth-form">
+        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
         <div className="auth-field-group">
           <label className="auth-label" htmlFor="register-name">
             To‘liq ism
@@ -88,13 +89,14 @@ function RegisterPage() {
         </button>
       </form>
 
-      <p className="auth-switch">
-        Allaqachon hisobingiz bormi?{" "}
-        <Link to="/login" className="auth-switch-link">
-          Kirish
-        </Link>
-      </p>
-    </div>
+        <p className="auth-switch">
+          Allaqachon hisobingiz bormi?{" "}
+          <Link to="/login" className="auth-switch-link">
+            Kirish
+          </Link>
+        </p>
+      </div>
+    </section>
   );
 }
 

@@ -1,11 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartItemCard from "../components/CartItemCard";
 import CartSummary from "../components/CartSummary";
 import { ArrowLeftIcon, CartIcon } from "../components/Icons";
 
 function CartPage() {
-  const navigate = useNavigate();
-
   const cartItems = [
     {
       id: 1,
@@ -40,14 +38,10 @@ function CartPage() {
           </p>
         </div>
 
-        <button
-          type="button"
-          className="auth-back-btn"
-          onClick={() => navigate("/")}
-        >
+        <Link to="/" className="auth-back-btn">
           <ArrowLeftIcon />
           <span>Do‘konga qaytish</span>
-        </button>
+        </Link>
       </div>
 
       <div className="cart-page-grid">

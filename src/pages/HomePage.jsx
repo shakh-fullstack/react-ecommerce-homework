@@ -1,15 +1,18 @@
+import { useOutletContext } from "react-router-dom";
 import FilterBar from "../components/FilterBar";
 import ProductGrid from "../components/ProductGrid";
 import OrdersSection from "../components/OrdersSection";
 
-function HomePage({
-  products,
-  wishlist,
-  onlyWishlist,
-  onToggleWishlist,
-  onToggleOnlyWishlist,
-  onResetWishlistFilter,
-}) {
+function HomePage() {
+  const {
+    products,
+    wishlist,
+    onlyWishlist,
+    onToggleWishlist,
+    onToggleOnlyWishlist,
+    onResetWishlistFilter,
+  } = useOutletContext();
+
   const filteredProducts = onlyWishlist
     ? products.filter((product) => wishlist.includes(product.id))
     : products;

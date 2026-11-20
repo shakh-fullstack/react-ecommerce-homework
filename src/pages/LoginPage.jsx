@@ -3,21 +3,22 @@ import { Link } from 'react-router-dom';
 
 function LoginPage() {
   return (
-    <div className="auth-card">
-      <div className="auth-card-top">
-        <span className="auth-badge">Kirish</span>
-        <Link to="/" type="button" className="auth-back-btn">
-          <ArrowLeftIcon />
-          <span>Do‘konga qaytish</span>
-        </Link>
-      </div>
+    <section className="auth-section" aria-label="Kirish">
+      <div className="auth-card">
+        <div className="auth-card-top">
+          <span className="auth-badge">Kirish</span>
+          <Link to="/" className="auth-back-btn">
+            <ArrowLeftIcon />
+            <span>Do‘konga qaytish</span>
+          </Link>
+        </div>
 
-      <h3 className="auth-title">Hisobga kirish</h3>
-      <p className="auth-desc">
-        Buyurtmalar tarixi va savatingizni ko‘rish uchun hisobingizga kiring.
-      </p>
+        <h3 className="auth-title">Hisobga kirish</h3>
+        <p className="auth-desc">
+          Buyurtmalar tarixi va savatingizni ko‘rish uchun hisobingizga kiring.
+        </p>
 
-      <form className="auth-form">
+        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
         <div className="auth-field-group">
           <label className="auth-label" htmlFor="login-email">
             Elektron pochta
@@ -52,13 +53,14 @@ function LoginPage() {
         </button>
       </form>
 
-      <p className="auth-switch">
-        Hali hisobingiz yo‘qmi?{" "}
-        <Link to="/register" className="auth-switch-link">
-          Ro‘yxatdan o‘tish
-        </Link>
-      </p>
-    </div>
+        <p className="auth-switch">
+          Hali hisobingiz yo‘qmi?{" "}
+          <Link to="/register" className="auth-switch-link">
+            Ro‘yxatdan o‘tish
+          </Link>
+        </p>
+      </div>
+    </section>
   );
 }
 
